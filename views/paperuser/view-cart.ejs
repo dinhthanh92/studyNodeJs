@@ -1,0 +1,71 @@
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="/stylepaper/cart.css">
+<!------ Include the above in your HEAD tag ---------->
+
+<script src="https://use.fontawesome.com/c560c025cf.js"></script>
+<div class="container">
+    <div class="card shopping-cart">
+        <div class="card-header bg-dark text-light">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            Shipping cart
+            <a href="/" class="btn btn-outline-info btn-sm pull-right">Continiu shopping</a>
+            <div class="clearfix"></div>
+        </div>
+        <div class="card-body">
+            <!-- PRODUCT -->
+            <% listcart.cart.forEach(function(list){ %>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-2 text-center">
+                    <img class="img-responsive" src="/upload/<%- list.imagePro %> " alt="prewiew" width="120"
+                        height="80">
+                </div>
+                <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+                    <strong><%- list.namePro %></strong>
+                </div>
+                <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+                    <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
+
+                        <strong><%- list.Price %></strong>
+
+                    </div>
+                    <div class="col-4 col-sm-4 col-md-4">
+                        <div class="quantity">
+                            <form action="" method="POST">
+                                <a href="update/plus/<%- list.Product_id %> "><input type="button" value="+"
+                                        class="plus"></a>
+                                <input type="text" step="2" max="99" min="1" value="<%- list.Quality %>" class="qty"
+                                    name="quality">
+                                <a href="update/min/<%- list.Product_id %> "><input type="button" value="-"
+                                        class="minus"></a>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-2 col-sm-2 col-md-2 text-right">
+                        <a onclick="return confirm('Do you want to delete')"
+                            href="delete/<%- list.Product_id %>"><button type="button"
+                                class="btn btn-outline-danger btn-xs"><i class="fa fa-trash"
+                                    aria-hidden="true"></i></button></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr>
+            <% }); %>
+            <Strong style="float: right;">Total Price: <%- listcart.totalPrice %> </Strong>
+            <a href="order/<%- listcart._id %> "><button class="btn btn-primary">Xac Nhan Dat Hang</button></a>
+        </div>
+    </div>
+</div>
